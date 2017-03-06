@@ -7,9 +7,7 @@ var _ = require('lodash'),
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     CopyWebpackPlugin=require('copy-webpack-plugin'),
-    HtmlPluginForRenderEjs = require('./html-plugin-render-ejs'),
-    getFiles = require('./get-files'),
-    getHtmlOptions = require('./html-plugin-iotions');
+    HtmlPluginForRenderEjs = require('./html-plugin-render-ejs');
 
 baseConfig.output = {
     publicPath: "/",
@@ -21,6 +19,25 @@ baseConfig.output = {
 //按照页面导出css
 var pagesCssExtract = new ExtractTextPlugin('pages', 'css/[name].[hash:8].css');
 baseConfig.plugins.push(pagesCssExtract);
+
+//vue组件编译相关
+baseConfig.module.vue = {
+    loaders: {
+        css: {
+            test: /\.css$/,
+            loader: pagesCssExtract.extract('vue-style-loader', 'css')
+        },
+        less: {
+            test: /\.less$/,
+            loader: pagesCssExtract.extract('vue-style-loader', 'css!less')
+        }
+    },
+    postcss: [
+        require('autoprefixer')({
+            browsers: ['last 2 versions']
+        })
+    ]
+};
 
 
 baseConfig.module.loaders.push({

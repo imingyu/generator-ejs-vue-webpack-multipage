@@ -17,10 +17,29 @@ baseConfig.output = {
     chunkFilename: "js/[name].[id].js"
 };
 
+
 //按照页面导出css
 var pagesCssExtract = new ExtractTextPlugin('pages', 'css/[name].css');
 baseConfig.plugins.push(pagesCssExtract);
 
+//vue组件编译相关
+baseConfig.module.vue = {
+    loaders: {
+        css: {
+            test: /\.css$/,
+            loader: pagesCssExtract.extract('vue-style-loader', 'css')
+        },
+        less: {
+            test: /\.less$/,
+            loader: pagesCssExtract.extract('vue-style-loader', 'css!less')
+        }
+    },
+    postcss: [
+        require('autoprefixer')({
+            browsers: ['last 2 versions']
+        })
+    ]
+};
 
 baseConfig.module.loaders.push({
     test: /\.css$/,

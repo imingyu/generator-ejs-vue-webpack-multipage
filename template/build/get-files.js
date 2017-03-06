@@ -6,8 +6,7 @@ function getFiles(dir, prefix) {
     fs.readdirSync(dir).forEach((item, index) => {
         var subDir = path.join(dir, item);
         if (fs.statSync(subDir).isDirectory()) {
-            prefix = prefix + "/" + item;
-            result = result.concat(getFiles(subDir, prefix));
+            result = result.concat(getFiles(subDir, prefix + "/" + item));
         } else {
             result.push(prefix + "/" + item);
         }

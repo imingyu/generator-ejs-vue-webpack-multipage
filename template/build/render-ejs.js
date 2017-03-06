@@ -8,7 +8,7 @@ var path = require("path"),
         cache: false,
         settings: {
             'view engine': "ejs",
-            "views": path.join(path.resolve(__dirname, '../'), '/src/')
+            "views": path.resolve(__dirname, '../src')
         },
         locals: locals
     };
