@@ -4,7 +4,6 @@ function HtmlPluginForRenderEjs(options) { }
 HtmlPluginForRenderEjs.prototype.apply = function (compiler) {
     compiler.plugin('compilation', function (compilation) {
         compilation.plugin('html-webpack-plugin-before-html-processing', function (htmlPluginData, callback) {
-            console.log(`htmlPluginData.plugin.options.templateFile=${htmlPluginData.plugin.options.templateFile}`);
             if (htmlPluginData.plugin.options.templateFile) {
                 renderEjs(htmlPluginData.plugin.options.templateFile, function (err, html) {
                     if (err) {

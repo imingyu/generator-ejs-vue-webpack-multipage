@@ -12,14 +12,10 @@ module.exports = function (webpackConfig) {
         dirJs = path.resolve(__dirname, '../src/js'),
         viewFiles = ['/index.ejs'].concat(getFiles(dirView, '/views'));
 
-    console.log(viewFiles);
-
     viewFiles.forEach((item, index) => {
         var viewFileName = path.join(dirSrc, item),
             distHtmlName = item.startsWith('/') ? item.substr(1) : item,
             jsFileName, jsEntryName;
-
-        console.log(`viewFileName=${viewFileName}`);
 
         distHtmlName = distHtmlName.substr(0, distHtmlName.lastIndexOf("."));
 

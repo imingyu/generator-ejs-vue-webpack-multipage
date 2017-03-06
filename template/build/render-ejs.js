@@ -1,6 +1,8 @@
 var path = require("path"),
     ejsMate = require('ejs-mate'),
-    beautify = require('js-beautify').html,
+    rehype = require('rehype'),
+    rehypeFormat = require('rehype-format'),
+    rehypeRender = rehype().use(rehypeFormat),
     locals = require("./ejs-locals"),
     ejsConfig = {
         _layoutFile: null,
@@ -18,10 +20,13 @@ module.exports = function (fileName, callback) {
         if (err) {
             callback(err);
         } else {
-            var formatterHtml = beautify(html, {
-                indent_size: 4
+            rehypeRender.process(html, function(err2, content) {
+                if(err2){
+                    callback(err2);
+                }else{
+                    callback(null, content.contents);
+                }
             });
-            callback(null, formatterHtml);
         }
     });
 }
