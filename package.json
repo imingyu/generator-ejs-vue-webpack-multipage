@@ -1,0 +1,25 @@
+{
+  "name": "generator-ejs-vue-webpack-multipage",
+  "version": "0.1.0",
+  "description": "ejs-vue-webpack多页面脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imingyu/generator-ejs-vue-webpack-multipage.git"
+  },
+  "keywords": [
+    "ejs",
+    "vue",
+    "webpack",
+    "multipage"
+  ],
+  "author": "Mingyu <mingyuhisoft@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imingyu/generator-ejs-vue-webpack-multipage/issues"
+  },
+  "homepage": "https://github.com/imingyu/generator-ejs-vue-webpack-multipage#readme"
+}

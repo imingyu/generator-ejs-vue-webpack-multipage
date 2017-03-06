@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title><%- block('_title').toString() %></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="renderer" content="webkit">
+	<%- block('_head').toString() %>
+	<%- block('_style').toString() %>
+</head>
+<body>
+	<%- body -%>
+	<%- block('_script').toString() %>
+</body>
+</html>

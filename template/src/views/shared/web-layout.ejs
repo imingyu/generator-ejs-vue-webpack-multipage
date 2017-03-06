@@ -1,0 +1,12 @@
+<% layout('/views/shared/base-layout') -%>
+<% if (block("fullTitle").toString() !== '') { %>
+	<% block("_title").append(block("fullTitle").toString()); %>
+<% } else if (block("title").toString() !== '') { %>
+	<% block("_title").append(block("title").toString()); %>
+<% } %>
+
+<% block("_style").append(block("style").toString()); %>
+
+<%- body -%>
+<% block("_script").append('<script src="/js/vue.js"></script>'); %>
+<% block("_script").append(block("script").toString()); %>
