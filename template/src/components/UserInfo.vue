@@ -1,6 +1,7 @@
 <template>
     <div class="user-info">
         <ul>
+            <li><img src="../img/avt.jpg" alt=""></li>
             <li>name:{{name}}</li>
             <li>email:{{email}}</li>
             <li>github:{{github}}</li>
@@ -10,7 +11,7 @@
 
 <style>
 .user-info ul{
-    padding-left: 50px;
+    padding-left: 30px;
 }
 </style>
 
