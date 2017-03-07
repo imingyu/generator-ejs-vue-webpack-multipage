@@ -60,11 +60,3 @@ watch.watchTree(path.resolve(__dirname, '../src'), function (f, curr, prev) {
         }
     }
 });
-
-//监听webpack.config的变化，变化后重新绑定compiler
-watch.watchTree(path.resolve(__dirname,'./'), function (f, curr, prev) {
-    if (typeof f == "object" && prev === null && curr === null) {
-    } else {
-        restartWebpack();
-    }
-});

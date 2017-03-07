@@ -79,23 +79,18 @@ module.exports = function () {
     baseConfig.plugins.push(new CleanWebpackPlugin(baseConfig.output.path));
 
 
-    //提取公用模块
-    baseConfig.plugins.push(new CommonsChunkPlugin({
-        name: "common",
-        filename: "js/[name].[hash:8].js",
-        minChunks: 3,
-        allChunks: true
-    }));
-
     //提取入口文件&编译ejs为html文件
     require('./entrys')(baseConfig);
     baseConfig.plugins.push(new HtmlPluginForRenderEjs());
 
-    //拷贝类库文件
-    baseConfig.plugins.push(new CopyWebpackPlugin([{
-        from: path.resolve(__dirname, "../node_modules/vue/dist/vue.js"),
-        to: path.resolve(__dirname, "../dist/js/vue.js")
-    }]));
+    //提取公用模块
+    baseConfig.plugins.push(new CommonsChunkPlugin({
+        name: "common",
+        filename: "js/[name].js",
+        minChunks: 3,
+        chunks: Object.keys(baseConfig.entry)
+    }));
+
 
     //压缩
     baseConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({

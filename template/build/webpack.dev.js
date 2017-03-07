@@ -18,7 +18,6 @@ module.exports = function () {
         chunkFilename: "js/[name].[id].js"
     };
 
-
     //按照页面导出css
     var pagesCssExtract = new ExtractTextPlugin('pages', 'css/[name].css');
     baseConfig.plugins.push(pagesCssExtract);
@@ -78,22 +77,16 @@ module.exports = function () {
     //清空上次生成的文件
     baseConfig.plugins.push(new CleanWebpackPlugin(baseConfig.output.path));
 
-    //提取公用模块
-    baseConfig.plugins.push(new CommonsChunkPlugin({
-        name: "common",
-        filename: "js/[name].js",
-        minChunks: 3,
-        allChunks: true
-    }));
-
     //提取入口文件&编译ejs为html文件
     require('./entrys')(baseConfig);
     baseConfig.plugins.push(new HtmlPluginForRenderEjs());
 
-    baseConfig.plugins.push(new CopyWebpackPlugin([{
-        from: path.resolve(__dirname, "../node_modules/vue/dist/vue.js"),
-        to: path.resolve(__dirname, "../dist/js/vue.js")
-    }]));
+    //提取公用模块
+    baseConfig.plugins.push(new CommonsChunkPlugin({
+        name: "common",
+        filename: "js/[name].js",
+        minChunks: 2
+    }));
 
     return baseConfig;
 }
