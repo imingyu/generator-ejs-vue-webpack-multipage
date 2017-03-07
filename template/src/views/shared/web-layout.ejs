@@ -3,6 +3,8 @@
 	<% block("_title").append(block("fullTitle").toString()); %>
 <% } else if (block("title").toString() !== '') { %>
 	<% block("_title").append(block("title").toString()); %>
+<% } else { %>
+	<% block("_title").append('Website'); %>
 <% } %>
 
 <% block("_style").append(block("style").toString()); %>

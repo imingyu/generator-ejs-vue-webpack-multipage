@@ -1,32 +1,33 @@
 var path = require("path"),
-    ejsMate = require('ejs-mate'),
+    ejsMate = require('./fork-ejs-mate.js'),
     rehype = require('rehype'),
     rehypeFormat = require('rehype-format'),
-    rehypeRender = rehype().use(rehypeFormat),
-    locals = require("./ejs-locals"),
-    ejsConfig = {
+    rehypeRender = rehype().use(rehypeFormat);
+
+module.exports = function (ejsContent, callback) {
+    var ejsConfig = {
         _layoutFile: null,
-        root: path.resolve(__dirname, '../'),
+        root: path.resolve(__dirname, '../src'),
         cache: false,
         settings: {
             'view engine': "ejs",
             "views": path.resolve(__dirname, '../src')
         },
-        locals: locals
+        locals:{
+            _:require('lodash')
+        }
     };
-
-module.exports = function (fileName, callback) {
-    ejsMate(fileName, ejsConfig, function (err, html) {
+    ejsMate(ejsContent, ejsConfig, function (err, html) {
         if (err) {
             callback(err);
         } else {
-            rehypeRender.process(html, function(err2, content) {
-                if(err2){
+            rehypeRender.process(html, function (err2, content) {
+                if (err2) {
                     callback(err2);
-                }else{
+                } else {
                     callback(null, content.contents);
                 }
             });
         }
     });
-}
+};

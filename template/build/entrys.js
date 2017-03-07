@@ -28,11 +28,13 @@ module.exports = function (webpackConfig) {
             item = item.replace(/\//g, ".");
             jsFileName = path.join(dirJs, '/pages/', item + '.js');
             jsEntryName = 'pages/' + item;
-            if (fs.existsSync(jsFileName)) {
-                entrys[jsEntryName] = jsFileName;
-                webpackConfig.plugins.push(new HtmlWebpackPlugin(getHtmlOptions(distHtmlName, viewFileName, jsEntryName)));
-            } else {
-                webpackConfig.plugins.push(new HtmlWebpackPlugin(getHtmlOptions(distHtmlName, viewFileName, null)));
+            if(fs.existsSync(viewFileName)){
+               if (fs.existsSync(jsFileName)) {
+                    entrys[jsEntryName] = jsFileName;
+                    webpackConfig.plugins.push(new HtmlWebpackPlugin(getHtmlOptions(distHtmlName, viewFileName, jsEntryName)));
+                } else {
+                    webpackConfig.plugins.push(new HtmlWebpackPlugin(getHtmlOptions(distHtmlName, viewFileName, null)));
+                } 
             }
         }
     });
