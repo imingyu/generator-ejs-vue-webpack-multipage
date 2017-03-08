@@ -5,11 +5,14 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+# 安装依赖
+npm i
 
-# serve with hot reload at localhost:8080
+# 启动开发服务器：http://localhost:5112
 npm run dev
 
-# build for production with minification
+# build
 npm run build
+```
+
+## [架手架使用/规约文档](https://github.com/imingyu/generator-ejs-vue-webpack-multipage/blob/master/README.md)
