@@ -2,9 +2,9 @@
     <div class="user-info">
         <ul>
             <li><img src="../img/avt.jpg" alt=""></li>
-            <li>name:{{name}}</li>
-            <li>email:{{email}}</li>
-            <li>github:{{github}}</li>
+            <li>name:\{{name}}</li>
+            <li>email:\{{email}}</li>
+            <li>github:\{{github}}</li>
         </ul>
     </div>
 </template>
