@@ -16,10 +16,10 @@ $ npm run dev
 ```
 
 ## 命令简介
-- `npm run dev`：开启一个以`5112`端口的开发服务器；
-    - 使用`browser-sync`做到的代码修改后，自动刷新页面（非热替换）；
+- `npm run dev`：开启一个以`5112`为端口的开发服务器；
+    - 使用`browser-sync`做到代码修改后，自动刷新页面（非热替换）；
     - 使用`webpack`进行模块化打包，vue组件编译；
-    - 关于端口：你可以在`my-project/build/dev-server.js#43`处修改此端口；
+    - 关于端口：你可以在`my-project/build/dev-server.js#43`行处修改此端口；
     - source map功能；
 
 - `npm run build`：build项目到`my-project/dist`目录
